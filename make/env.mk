@@ -4,4 +4,5 @@
 	COLORS=$(COLORS)
 	EOF
 
-%:: .env;
+.DEFAULT: .env;
+	$(MAKE) help
