@@ -1,8 +1,11 @@
-.env:
-	cat << EOF > .env
-	VERBOSE=$(VERBOSE)
-	COLORS=$(COLORS)
-	EOF
+define env_vars
+grep -hEo '^([A-Z\_]+)\s*\?=' $(MAKEFILE_LIST) | sed 's/\s*?=.*//g' | sort -d
+endef
 
-.DEFAULT: .env;
+.env:
+	for v in $(foreach v,$(shell $(env_vars)),$(v)="$($(v))"); do
+		echo "$${v}" >> .env
+	done
+
+.DEFAULT: .env
 	$(MAKE) help
