@@ -1,44 +1,35 @@
 COLORS			?= yes
 
-#
-# Colored display
-#
-ifneq (,$(and $(findstring yes,$(COLORS)),$(findstring color,$(TERM))))
-bold 			:= $(shell tput bold)
-normal 			:= $(shell tput sgr0)
-errorTitle 		:= $(shell tput setab 1 && tput bold && echo '\n')
-recommendation 	:= $(shell tput setab 4)
-underline 		:= $(shell tput smul)
-reset 			:= $(shell tput -Txterm sgr0)
-black 			:= $(shell tput setaf 0)
-red 			:= $(shell tput setaf 1)
-green 			:= $(shell tput setaf 2)
-yellow 			:= $(shell tput setaf 3)
-blue 			:= $(shell tput setaf 4)
-magenta 		:= $(shell tput setaf 5)
-cyan 			:= $(shell tput setaf 6)
-white 			:= $(shell tput setaf 7)
-space			:= $(shell echo -n " ")
-
 define message
-echo "$(1) $(2) $(bold)$(cyan)$(3)$(reset) $(4) $(bold)$(cyan)$(5)$(reset)"
-endef
-
-define help_line
-'{printf "$(bold)$(cyan)%-16s$(reset)%s %s\n", $$1, $$2, $$3}'
-endef
-
-#
-# Default display
-#
-else
-
-define message
-echo "$(2) $(3) $(4) $(5)"
+echo "$(2) $(3)"
 endef
 
 define help_line
 '{gsub(/^ /, "", $$3); printf "%-16s %s\n", $$1, $$3}'
+endef
+
+ifneq (,$(and $(findstring yes,$(COLORS)),$(findstring color,$(TERM))))
+reset			:= \033[0m
+bold			:= \033[1m
+underline		:= \033[4m
+gray 			:= \033[1;30m
+red 			:= \033[1;31m
+green 			:= \033[1;32m
+yellow 			:= \033[1;33m
+blue 			:= \033[1;34m
+purple 			:= \033[1;35m
+cyan 			:= \033[1;36m
+white 			:= \033[1;37m
+highlight		:= $(bold)$(cyan)
+hl				:= $(highlight)
+rs				:= $(reset)
+
+define message
+echo -e "$(1) $(2) $(3)"
+endef
+
+define help_line
+'{printf "$(hl)%-16s$(rs)%s %s\n", $$1, $$2, $$3}'
 endef
 
 endif
