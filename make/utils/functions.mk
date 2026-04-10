@@ -30,3 +30,8 @@ $(call checksum,$(4),$(5))
 $(call extract,$(5))
 $(call executable,$(5))
 endef
+
+define random_hash
+[ ! -z "$(1)" ] && length="$(1)" || length="24"
+tr -dc 'A-Za-z0-9!%&()*+,-.:;<=>?@_' </dev/urandom | head -c "$${length}"; echo
+endef
