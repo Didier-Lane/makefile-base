@@ -167,3 +167,13 @@ EOF
 [{Makefile,*.mk}]
 indent_style = tab
 ```
+
+You can now start to add [your own recipes](#adding-recipes) to extend functionnalities for your project
+
+#### Update the Git Subtree
+
+>Use the following command to pull changes from this repository to your project Git Subtree
+
+```shell
+git subtree pull --prefix=make/base makefile-base main --squash
+```
