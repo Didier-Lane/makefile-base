@@ -33,4 +33,4 @@ endif
 .EXPORT_ALL_VARIABLES:
 
 # includes sub makefiles from the "make" directory
--include $(addsuffix /*.mk, $(shell find ./make -type d))
+-include $(shell find ./make -type f -name '*.mk')
