@@ -159,7 +159,7 @@ EOF
 ```
 
 > [!NOTE]
->Copy the `make/base/.gitignore` file to the root directory of the project or add the `.env` line to your existing `.gitignore` file in order to avoid the `.env` file to be staged by git by either
+>Copy the `make/base/.gitignore` file to the root directory of the project or add the `.env` line to your existing `.gitignore` file in order to avoid the `.env` file to be staged by git.
 
 >Copy the `make/base/.editorconfig` file to the root directory of your project or add the bellow content to your existing `.editorconfig` file
 
