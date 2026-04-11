@@ -6,7 +6,9 @@ JQ_DOWNLOAD_URL	:= https://github.com/$(JQ_REPOSITORY)/releases/download/$(JQ_VE
 JQ_BIN			:= $(call path,$(BIN_DIR)/jq)
 
 $(JQ_BIN): $(BIN_DIR)
-	$(call release_install,JQ,$(JQ_VERSION),$(JQ_DOWNLOAD_URL),$(JQ_DIGEST),$(JQ_BIN))
+	if [[ ! -f "$(JQ_BIN)" ]] || [[ "$$( jq --version )" != "$(JQ_VERSION)" ]]; then
+		$(call release_install,JQ,$(JQ_VERSION),$(JQ_DOWNLOAD_URL),$(JQ_DIGEST),$(JQ_BIN))
+	fi
 
 .PHONY: jq
 jq: $(JQ_BIN)

@@ -6,7 +6,9 @@ YQ_DOWNLOAD_URL	:= https://github.com/$(YQ_REPOSITORY)/releases/download/$(YQ_VE
 YQ_BIN			:= $(call path,$(BIN_DIR)/yq)
 
 $(YQ_BIN): $(BIN_DIR)
-	$(call release_install,YQ,$(YQ_VERSION),$(YQ_DOWNLOAD_URL),$(YQ_DIGEST),$(YQ_BIN))
+	if [[ ! -f "$(YQ_BIN)" ]] || [[ "$$( yq --version | grep -Eo 'v([0-9\.]+)$$' )" != "$(YQ_VERSION)" ]]; then
+		$(call release_install,YQ,$(YQ_VERSION),$(YQ_DOWNLOAD_URL),$(YQ_DIGEST),$(YQ_BIN))
+	fi
 
 .PHONY: yq
 yq: $(YQ_BIN)

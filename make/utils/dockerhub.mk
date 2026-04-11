@@ -7,7 +7,13 @@ curl -fsSL \
 endef
 
 define jq_get_docker_latest_image_digest
-jq -r '.[] | select(.name | contains("latest"))
+extra=""
+if [ ! -z "$(2)" ]; then
+	for tag in $(2); do
+		extra+=' | select(.name | contains("'"$${tag}"'") | not)'
+	done
+fi
+jq -r '.[] | select(.name | contains("latest") | not)'"$${extra}"'
 	| .images[] | select(.architecture == "$(ARCH)")' \
 	< "$(1)" | jq -rs 'first | .digest'
 endef
@@ -28,7 +34,7 @@ else
 fi
 cache="$$( mktemp )"
 $(call docker_api_get_tags,$${namespace},$${repository}) > "$${cache}"
-latestDigest="$$( $(call jq_get_docker_latest_image_digest,$${cache}) )"
+latestDigest="$$( $(call jq_get_docker_latest_image_digest,$${cache},$(3)) )"
 latestTag="$$( $(call jq_get_docker_tag_by_image_digest,$${latestDigest},$${cache}) )"
 if [[ "$${latestTag}" == "null" ]]; then
 	$(call message,⚠️ ,Failed to resolve $(hl)$(1)$(rs) latest tag)
