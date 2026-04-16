@@ -1,5 +1,9 @@
 DOCKER_HUB_API_ENDPOINT	:= https://hub.docker.com/v2
 
+ifndef ARCH
+ARCH					:= $(shell uname -m)
+endif
+
 define docker_api_get_tags
 curl -fsSL \
 	"$(DOCKER_HUB_API_ENDPOINT)/namespaces/$(1)/repositories/$(2)/tags" \
