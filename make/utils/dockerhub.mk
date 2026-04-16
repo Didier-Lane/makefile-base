@@ -2,6 +2,9 @@ DOCKER_HUB_API_ENDPOINT	:= https://hub.docker.com/v2
 
 ifndef ARCH
 ARCH					:= $(shell uname -m)
+ifeq (x86_64,$(ARCH))
+override	ARCH		= amd64
+endif
 endif
 
 define docker_api_get_tags
