@@ -26,17 +26,15 @@ It includes
 └── Makefile
 ```
 
-- [Makefile](./Makefile) is the main file invoked by make, it controls the inclusion of files ending by `.mk` from the `make` directory as sub makefiles.
-
-- [deps](./make/deps) directory stores the [dependencies](#dependencies) makefiles
-
+- [Makefile](./Makefile) is the main file invoked by make, it controls the inclusion of files ending by `.mk` from the [make](./make) directory as sub makefiles.
+- [deps](./make/deps) directory stores the [dependencies](#dependencies) makefiles.
 - [utils](./make/utils) directory holds the makefiles utilities such as an [automated helper](./make/utils/help.mk), [messages display management](./make/utils/display.mk), and so on.
 
 ## Usage
 
-You can either clone this repository as a base of your project or use it as a [git subtree](#git-subtree-integration)
+You can either clone this repository as a base of your project or use it as a [git subtree](#git-subtree-integration).
 
-The basic usage is to invoke `make` which will display the helper
+The basic usage is to invoke `make` which will display the helper.
 
 ```shell
 $ make
@@ -51,13 +49,15 @@ clean           ✨ Cleans the working copy
 help            💡 Shows this help menu
 ```
 
-### Dependencies
+## Dependencies
 
 Dependencies are makefiles which can be enabled to provide functionnalities, such as installing required binaries or implementing some functions for later use in Make recipes.
 
-For example the [./make/deps/jq.mk](./make/deps/jq.mk) makefile holds the recipes to download and install [JQ command-line JSON processor](https://github.com/jqlang/jq)
+Enabling the inclusion of dependencies makefiles is controlled by the `DEPENDENCIES` [environment variable](#environment-variables) when invoking make.
 
-Enabling the inclusion of dependencies makefiles is controlled by the `DEPENDENCIES` [environment variable](#environment-variables) when invoking make, for example, to enable the `jq` dependency run the following command when creating [the `.env` file](#the-env-file)
+For example the [./make/deps/jq.mk](./make/deps/jq.mk) makefile holds the recipes to download and install [JQ command-line JSON processor](https://github.com/jqlang/jq) through the recipe called `jq`.
+
+To enable the `jq` dependency run the following command when creating [the `.env` file](#the-env-file).
 
 ```shell
 make DEPENDENCIES=jq
@@ -69,6 +69,17 @@ Then once the `jq` dependency is enabled, you can use it as a [prerequisite](htt
 test.json: jq
     jq -n '.foo = "bar" | .bar = "foo"' > test.json
 ```
+> [!NOTE]
+>The above example will automatically install [JQ](https://github.com/jqlang/jq) when invoking `make test.json` because the `test.json` recipe as `jq` as [prerequisite](https://www.gnu.org/software/make/manual/make.html#Rule-Syntax)
+
+### Special dependencies
+
+Some dependencies are automatically added on the `DEPENDENCIES` [environment variable](#environment-variables) when invoking make when some conditions are met.
+
+| Dependency                  | Makefile                                    | Description           | Condition
+|:--                          |:--                                          |:--                    |:--
+| `host`                      | [./make/deps/host.mk](./make/deps/host.mk)  | Provides host system informations such as the OS name, the processor architecture and the `BIN_DIR` [environment variable](#user-defined-environment-variables) | `DEPENDENCIES` is not empty and doesn't includes `host`
+| `jq`                      | [./make/deps/jq.mk](./make/deps/jq.mk)  | Provides [JQ command-line JSON processor](https://github.com/jqlang/jq) for [github](./make/deps/github.mk) and / or [dockerhub](./make/deps/dockerhub.mk) dependencies | `DEPENDENCIES` contains either `github` or `dockerhub` and doesn't includes `jq`
 
 ## Environment variables
 
@@ -85,6 +96,7 @@ Those are the variables that are stored in the [the `.env` file](#the-env-file)
 | Name                  | Aliases               | Description               | Default value
 |:--                    |:--                    |:--                        |:--
 | `DEPENDENCIES`        | `DEPS`                | Enables [dependencies](#dependencies) | `null`
+| `BIN_DIR`             |                       | The directory where dependencies binairies will be downloaded.<br/>This variable is only available if the `host` [special dependency](#special-dependencies) is enabled | `~/.local/bin`
 
 ### Special variables
 
