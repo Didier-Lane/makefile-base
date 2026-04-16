@@ -49,6 +49,6 @@ $(get_help_lines) \
 endef
 
 .PHONY: help
-help: # 💡 Shows This Help Menu
+help: # 💡 Shows this help menu
 	echo -e "$(HELP_HEADER)"
 	$(display_help_lines)
