@@ -63,7 +63,7 @@ $ make test
 [dependency]: ../deps.md
 [make/deps/dockerhub.mk]: ../../make/deps/dockerhub.mk
 [`.env`]: ../env.md#the-env-file
-[environment variable]: ../env.md#user-defined-environment-variables
+[environment variable]: ../env.md
 [special dependencies]: ../deps.md#special-dependencies
 [call function]: https://www.gnu.org/software/make/manual/make.html#The-call-Function
 [phony target]: https://www.gnu.org/software/make/manual/make.html#Phony-Targets

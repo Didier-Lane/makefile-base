@@ -21,6 +21,6 @@ test.yaml: yq
 [YQ]: https://github.com/mikefarah/yq
 [make/deps/yq.mk]: ../../make/deps/yq.mk
 [`.env`]: ../env.md#the-env-file
-[environment variable]: ../env.md#user-defined-environment-variables
+[environment variable]: ../env.md
 [target]: https://www.gnu.org/software/make/manual/make.html#What-a-Rule-Looks-Like
 [prerequisite]: https://www.gnu.org/software/make/manual/make.html#Rule-Syntax

@@ -48,6 +48,39 @@ clean           ✨ Cleans the working copy
 help            💡 Shows this help menu
 ```
 
+### Custom header
+
+Customizing the helper header is available with the `HELP_HEADER` variable from a Makefile.
+
+```shell
+define HELP_HEADER
+$(underline)Usage$(reset)
+
+	# To run and execute a target
+	$(bold)make $(cyan)<target>$(reset)
+$(HELP_HEADER_EXTRAS)
+$(underline)Available Targets$(reset)
+
+endef
+```
+
+The `HELP_HEADER_EXTRAS` variable can be also used to customize the part of the helper header between the `Usage` and `Available Targets` sections.
+
+```shell
+define HELP_HEADER_EXTRAS
+$(bold)Some extra lines$(reset)
+
+endef
+```
+
+### Custom Line padding
+
+Customizing the space between targets and description in the helper is available with the `HELP_LINE_PADDING` variable from a Makefile.
+
+```shell
+HELP_LINE_PADDING := 24
+```
+
 [help]: ../make/utils/help.mk
 [prerequisites]: https://www.gnu.org/software/make/manual/make.html#Rule-Syntax
 [targets]: https://www.gnu.org/software/make/manual/make.html#What-a-Rule-Looks-Like

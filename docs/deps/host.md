@@ -8,4 +8,4 @@ Because it is a [special dependency], you don't necessary have to enable it manu
 [special dependency]: ../deps.md#special-dependencies
 [make/deps/host.mk]: ../../make/deps/host.mk
 [`.env`]: ../env.md#the-env-file
-[environment variable]: ../env.md#user-defined-environment-variables
+[environment variable]: ../env.md

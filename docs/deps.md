@@ -30,7 +30,7 @@ Some dependencies are automatically added on the `DEPENDENCIES` [environment var
 | [jq]                        | `DEPENDENCIES` contains either `github` or `dockerhub` and doesn't includes `jq`
 
 [`.env`]: ./env.md#the-env-file
-[environment variable]: ./env.md#user-defined-environment-variables
+[environment variable]: ./env.md
 [host]: ./deps/host.md
 [jq]: ./deps/jq.md
 [yq]: ./deps/yq.md
