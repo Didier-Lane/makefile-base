@@ -17,6 +17,13 @@ test.json: jq
 >[!TIP]
 >The above example declares a [target] `test.json`, it will automatically install [JQ] when invoking `make test.json` because it has `jq` as [prerequisite].
 
+### Environment variables
+
+| Name                  | Description                       | Default value
+|:--                    |:--                                |:--
+| `JQ_VERSION`          | The version of [JQ] | `jq-1.8.1`
+| `JQ_DIGEST`           | The digest of the downloaded [JQ] release asset | `sha256:020468de7539ce70ef1bceaf7cde2e8c4f2ca6c3afb84642aabc5c97d9fc2a0d`
+
 [dependency]: ../deps.md
 [JQ]: https://github.com/jqlang/jq
 [make/deps/jq.mk]: ../../make/deps/jq.mk

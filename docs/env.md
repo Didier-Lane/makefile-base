@@ -10,23 +10,29 @@ It can be removed either manually or with the [clean] target.
 
 ### Stored environment variables
 
-Variables stored in the [`.env`] file are those parsed from the included Makefiles which are declared with a [conditional variable assignment].
+Variables stored in the [`.env`] file are those parsed from the included Makefiles which are declared with a [conditional variable assignment] ( e.g. : `FOO ?= bar` ).
 
 | Name                  | Aliases               | Description                       | Default value
 |:--                    |:--                    |:--                                |:--
 | `DEPENDENCIES`        | `DEPS`                | List of enabled [dependencies]    | `null`
-| `BIN_DIR`             |                       | The directory where dependencies binairies will be downloaded.<br/>This variable is only available if the `host` [special dependency] is enabled | `~/.local/bin`
+
+>[!NOTE]
+>[dependencies] can also define environment variables that will be stored in the [`.env`] file, like the `BIN_DIR` variable defined by the [host] dependency.
 
 ### Special variables
 
-Special variables are **not** stored in the [`.env`] file and can either be overrided through the command line or directly from a Makefile.
+Special variables are **not** stored in the [`.env`] file and can be declared through the command line, they can have any value once they are declared.
 
 | Name                  | Aliases               | Description                       | Default value
 |:--                    |:--                    |:--                                |:--
 | `VERBOSE`             |                       | Enables make recipes verbosity    | `undefined`
 | `NOCOLORS`            |                       | Disables colored [display]        | `undefined`
-| `HELP_HEADER`         |                       | Custom [helper] header            | `undefined`
-| `HELP_LINE_PADDING`   |                       | Custom [helper] line padding      | `16`
+
+#### Example
+
+```shell
+make VERBOSE=1 NOCOLORS=yes
+```
 
 [`.env`]: #the-env-file
 [dependencies]: ./deps.md
@@ -35,5 +41,5 @@ Special variables are **not** stored in the [`.env`] file and can either be over
 [target]: https://www.gnu.org/software/make/manual/make.html#What-a-Rule-Looks-Like
 [conditional variable assignment]: https://www.gnu.org/software/make/manual/make.html#Conditional-Variable-Assignment
 [display]: ./display.md#disabling-colors
-[helper]: ./help.md
 [special dependency]: ./deps.md#special-dependencies
+[host]: ./deps/host.md

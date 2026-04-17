@@ -17,6 +17,14 @@ test.yaml: yq
 >[!TIP]
 >The above example declares a [target] `test.yaml`, it will automatically install [YQ] when invoking `make test.yaml` because it has `yq` as [prerequisite].
 
+### Environment variables
+
+| Name                  | Description                       | Default value
+|:--                    |:--                                |:--
+| `YQ_VERSION`          | The version of [YQ] | `v4.52.5`
+| `YQ_DIGEST`           | The digest of the downloaded [YQ] release asset | `sha256:75d893a0d5940d1019cb7cdc60001d9e876623852c31cfc6267047bc31149fa9`
+
+
 [dependency]: ../deps.md
 [YQ]: https://github.com/mikefarah/yq
 [make/deps/yq.mk]: ../../make/deps/yq.mk

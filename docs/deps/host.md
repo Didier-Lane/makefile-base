@@ -4,8 +4,14 @@ The `host` [dependency] is responsible for providing host system informations su
 
 Because it is a [special dependency], you don't necessary have to enable it manually unless it is the only [dependency] you require.
 
+### Environment variables
+
+| Name                  | Description                       | Default value
+|:--                    |:--                                |:--
+| `BIN_DIR`             | The directory where dependencies binairies will be downloaded | `~/.local/bin`
+
 [dependency]: ../deps.md
 [special dependency]: ../deps.md#special-dependencies
 [make/deps/host.mk]: ../../make/deps/host.mk
 [`.env`]: ../env.md#the-env-file
-[environment variable]: ../env.md
+[environment variable]: #environment-variables

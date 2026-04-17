@@ -17,8 +17,8 @@ make DEPENDENCIES="jq yq"
 | [host]                      | [make/deps/host.mk]  | Provides host system informations such as the OS name, the processor architecture and the `BIN_DIR` [environment variable]
 | [jq]                      | [make/deps/jq.mk]         | Provides [JQ command-line JSON processor][JQ]
 | [yq]                      | [make/deps/yq.mk]         | Provides [YQ command-line YAML processor][YQ]
-| [dockerhub]               | [make/deps/dockerhub.mk]  | Provides a function for checking for docker immutable tags
-| [github]               | [make/deps/github.mk]  | Provides a function for checking for newer github release version
+| [dockerhub]               | [make/deps/dockerhub.mk]  | Provides a function for checking for newer docker immutable tags
+| [github]               | [make/deps/github.mk]  | Provides functions for checking for newer github release version and newer github package container tag
 
 ### Special dependencies
 

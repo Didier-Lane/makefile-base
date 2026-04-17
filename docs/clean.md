@@ -4,9 +4,11 @@ The `clean` [target] is responsible for removing the project generated files tha
 
 By default it removes only the [`.env`] file from the project.
 
-This can be customized with the Make variable `CLEAN_COMMAND` from a Makefile.
+### Custom command
 
-For example, if you need to remove a generated `config.json` file on cleanup customize the `CLEAN_COMMAND` variable as bellow
+The clean command can be customized with the Make variable `CLEAN_COMMAND` from a Makefile.
+
+For example, if you need to remove a generated `config.json` file on cleanup customize the `CLEAN_COMMAND` variable as bellow.
 
 ```shell
 define CLEAN_COMMAND
