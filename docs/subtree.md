@@ -59,7 +59,7 @@ At this point the directory structure should look like.
         └── README.md
 ```
 
-From here you just have to create a `Makefile` which includes the `make/base/Makefile`.
+From here you just have to create a `Makefile` at the root of the project which includes the `make/base/Makefile`.
 
 ```shell
 cat <<EOF > Makefile

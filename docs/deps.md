@@ -10,6 +10,13 @@ For example, enabling [jq] and [yq] dependencies.
 make DEPENDENCIES="jq yq"
 ```
 
+If you have integrated this project as a [git subtree] you can declare the `DEPENDENCIES` [environment variable] from the root Makefile.
+
+```shell
+DEPENDENCIES = jq yq
+include make/base/Makefile
+```
+
 ### Available dependencies
 
 | Dependency                  | Makefile                                    | Description
@@ -43,3 +50,4 @@ Some dependencies are automatically added on the `DEPENDENCIES` [environment var
 [make/deps/github.mk]: ../make/deps/github.mk
 [JQ]: https://github.com/jqlang/jq
 [YQ]: https://github.com/mikefarah/yq
+[git subtree]: ./subtree.md
