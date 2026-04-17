@@ -25,6 +25,34 @@ clean           ✨ Cleans the working copy
 help            💡 Shows this help menu
 ```
 
+### Variables substitution
+
+The helper also manages variable substitution as demonstrated in the bellow example.
+
+Assuming there is a file `make/test.mk` with the following content.
+
+```shell
+SOME_FILE := test.txt
+
+$(SOME_FILE): # 📝 Creates the file $(SOME_FILE)
+	echo "test" > "$(SOME_FILE)"
+```
+
+Then invoking the helper will result with the following content.
+
+```shell
+Usage
+
+# To run and execute a target
+make <target>
+
+Available Targets
+
+clean           ✨ Cleans the working copy
+help            💡 Shows this help menu
+test.txt        📝 Creates the file test.txt
+```
+
 ### Invoking
 
 Invoking the `help` target is available in the following ways
