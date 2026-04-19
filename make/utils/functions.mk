@@ -31,3 +31,7 @@ $(call checksum,$(4),$(5))
 $(call extract,$(5))
 $(call executable,$(5))
 endef
+
+define random_hash
+head -c 24 /dev/urandom | base64
+endef

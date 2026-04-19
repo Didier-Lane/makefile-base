@@ -1,5 +1,10 @@
-OS					?= $(shell uname -s | tr "[:upper:]" "[:lower:]")
-ARCH				?= $(shell uname -m)
+ifndef OS
+OS					::= $(shell uname -s | tr "[:upper:]" "[:lower:]")
+endif
+
+ifndef ARCH
+ARCH				::= $(shell uname -m)
+endif
 
 ifeq (x86_64,$(ARCH))
 override	ARCH	= amd64
