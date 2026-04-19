@@ -8,4 +8,4 @@ endef
 	done
 
 .DEFAULT: .env
-	$(MAKE) help
+	$(MAKE) $(.DEFAULT_GOAL)
