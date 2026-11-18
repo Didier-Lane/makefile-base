@@ -1,6 +1,6 @@
 YQ_REPOSITORY	:= mikefarah/yq
-YQ_VERSION		:= v4.53.3
-YQ_DIGEST		:= sha256:fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4
+YQ_VERSION		:= v4.54.3
+YQ_DIGEST		:= sha256:129534601871538efe0ba4c5e62a34fb1d5f469bcb975c4fddeb467d82974973
 YQ_ASSET		:= yq_$(OS)_$(ARCH)
 YQ_DOWNLOAD_URL	:= https://github.com/$(YQ_REPOSITORY)/releases/download/$(YQ_VERSION)/$(YQ_ASSET)
 YQ_BIN			:= $(BIN_DIR)/yq
