@@ -29,6 +29,13 @@ endif
 # includes working copy environment variables
 -include .env
 
+# includes user defined environment files
+EXTRA_ENV_FILES 		:= $(shell find . -type f -name '.env.*')
+
+ifneq (,$(EXTRA_ENV_FILES))
+-include $(EXTRA_ENV_FILES)
+endif
+
 # shares all environment variables accross makefiles
 .EXPORT_ALL_VARIABLES:
 
